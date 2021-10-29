@@ -326,22 +326,22 @@ public class TencentKitPlugin implements FlutterPlugin, ActivityAware, ActivityR
             sendIntent.putExtra(Intent.EXTRA_TEXT, summary);
             sendIntent.setType("text/*");
             // 普通大众版 > 办公简洁版 > 急速轻聊版
-            PackageManager packageManager = applicationContext.getPackageManager();
-            List<PackageInfo> infos = packageManager.getInstalledPackages(0);
-            if (infos != null && !infos.isEmpty()) {
-                for (String packageName : Arrays.asList("com.tencent.mobileqq", "com.tencent.tim", "com.tencent.qqlite")) {
-                    for (PackageInfo info : infos) {
-                        if (packageName.equals(info.packageName)) {
-                            sendIntent.setPackage(packageName);
-                            if (sendIntent.resolveActivity(applicationContext.getPackageManager()) != null) {
-                                sendIntent.setComponent(new ComponentName(packageName, "com.tencent.mobileqq.activity.JumpActivity"));
-                                activityPluginBinding.getActivity().startActivity(sendIntent);
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
+//            PackageManager packageManager = applicationContext.getPackageManager();
+//            List<PackageInfo> infos = packageManager.getInstalledPackages(0);
+//            if (infos != null && !infos.isEmpty()) {
+//                for (String packageName : Arrays.asList("com.tencent.mobileqq", "com.tencent.tim", "com.tencent.qqlite")) {
+//                    for (PackageInfo info : infos) {
+//                        if (packageName.equals(info.packageName)) {
+//                            sendIntent.setPackage(packageName);
+//                            if (sendIntent.resolveActivity(applicationContext.getPackageManager()) != null) {
+//                                sendIntent.setComponent(new ComponentName(packageName, "com.tencent.mobileqq.activity.JumpActivity"));
+//                                activityPluginBinding.getActivity().startActivity(sendIntent);
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+//            }
         }
         result.success(null);
     }
